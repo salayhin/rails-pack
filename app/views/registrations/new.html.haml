@@ -1,0 +1,102 @@
+.container.main-container.headerOffset
+  .row
+    .breadcrumbDiv.col-lg-12
+      %ul.breadcrumb
+        %li
+          %a{:href => "index.html"} Home
+        %li.active Authentication
+  .row
+    .col-lg-9.col-md-9.col-sm-7
+      %h1.section-title-inner
+        %span
+          %i.fa.fa-lock
+          Authentication
+      .row.userInfo
+        .col-xs-12.col-sm-6
+          .control-group
+            = link_to 'SIGN UP WITH FACEBOOK', user_omniauth_authorize_path(:facebook), :class => 'fb_button btn btn-block btn-lg'
+      .row.userInfo
+        .col-xs-12.col-sm-6
+          %h5.text-center{:style => 'padding:10px 0 10px 0;'} OR
+      .row
+        = devise_error_messages!
+      .row.userInfo
+        .col-xs-12.col-sm-6
+          %h2.block-title-2 Create an account
+          = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'regForm', :method => :post} do |f|
+            .form-group
+              %label First name
+              = f.text_field :first_name, class: 'form-control', :placeholder => 'Enter First Name', :size => '50'
+            .form-group
+              %label Last name
+              = f.text_field :last_name, class: 'form-control', :placeholder => 'Enter Last Name', :size => '50'
+            .form-group
+              %label Email
+              = f.text_field :email, class: 'form-control', :placeholder => 'Email', :size => '50'
+            .form-group
+              %label Password
+              = f.password_field :password, class: 'form-control', autocomplete: 'off', :placeholder => 'Password', :size => '50'
+            .form-group
+              %label Confirm Password
+              = f.password_field :password_confirmation, class: 'form-control', autocomplete: 'off', :placeholder => 'Confirm Password', :size => '50'
+            .error
+            %div
+              %div
+                = f.submit 'Submit', class:'btn btn-primary', :value => 'Submit'
+        -#.col-xs-12.col-sm-6
+        -#  %h2.block-title-2
+        -#    %span Already registered?
+        -#  %form.logForm{:role => "form"}
+        -#    .form-group
+        -#      %label Email address
+        -#      %input.form-control{:placeholder => "Enter email", :type => "email"}
+        -#    .form-group
+        -#      %label Password
+        -#      %input.form-control{:placeholder => "Password", :type => "password"}
+        -#    .checkbox
+        -#      %label{:style => "display: none;"}
+        -#        %input{:name => "checkbox", :style => "display: none;", :type => "checkbox"}
+        -#          Remember me
+        -#      %span#icr-3.icr.enabled
+        -#        %span.icr__checkbox
+        -#        %span.icr__text Remember me
+        -#    .form-group
+        -#      %p
+        -#        %a{:href => "forgot-password.html", :title => "Recover your forgotten password"} Forgot your password?
+        -#    %a.btn.btn-primary{:href => "account.html"}
+        -#      %i.fa.fa-sign-in
+        -#      Sign In
+    / /row end
+    .col-lg-3.col-md-3.col-sm-5
+  %div{:style => "clear:both"}
+
+
+:css
+  /*flash*/
+  .alert-error {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: left;
+   }
+
+  .alert-alert {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: left;
+   }
+
+  .alert-success {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+   }
+
+  .alert-notice {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+   }

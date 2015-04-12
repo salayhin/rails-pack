@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+
   ActiveAdmin.routes(self)
+
+  devise_for ActiveAdmin::Devise.config
+
+  devise_for :users, path_names: { sign_up: 'register' },
+             controllers: {  sessions:            'sessions',
+                             registrations:       'registrations',
+                             passwords:           'passwords'
+             }
+
+  root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

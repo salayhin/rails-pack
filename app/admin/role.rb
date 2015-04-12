@@ -1,10 +1,10 @@
-ActiveAdmin.register User do
+ActiveAdmin.register Role do
 
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :email, :password, :password_confirmation, role_ids: []
+  permit_params :role
   #
   # or
   #
@@ -14,14 +14,5 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  form do |f|
-    f.inputs "User Details" do
-      f.input :email
-      f.input :password
-      f.input :password_confirmation
-      f.input :roles, as: :check_boxes
-    end
-    f.actions
-  end
 
 end

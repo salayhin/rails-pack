@@ -1,0 +1,35 @@
+.container.main-container.headerOffset
+  .row
+    .breadcrumbDiv.col-lg-12
+      %ul.breadcrumb
+        %li
+          %a{:href => "index.html"} Home
+        %li.active Authentication
+  .row
+    .col-lg-9.col-md-9.col-sm-7
+      %h1.section-title-inner
+        %span
+          %i.fa.fa-lock
+          Login
+      .row.userInfo
+        .col-xs-12.col-sm-6
+          .control-group
+            = link_to 'SIGN IN WITH FACEBOOK', user_omniauth_authorize_path(:facebook), :class => 'fb_button btn btn-block btn-lg'
+      .row.userInfo
+        .col-xs-12.col-sm-6
+          %h5.text-center{:style => 'padding:10px 0 10px 0;'} OR
+      .row.userInfo
+        .col-xs-12.col-sm-6
+          = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'regForm', :method => :post} do |f|
+            .form-group
+              %label Email
+              = f.text_field :email, class: 'form-control', :placeholder => 'Email', :size => '50'
+            .form-group
+              %label Password
+              = f.password_field :password, class: 'form-control', autocomplete: 'off', :placeholder => 'Password', :size => '50'
+            .error
+            %div
+              %div
+                = f.submit 'Submit', class:'btn btn-primary', :value => 'Login'
+    .col-lg-3.col-md-3.col-sm-5
+  %div{:style => "clear:both"}
