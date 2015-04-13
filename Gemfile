@@ -48,4 +48,3 @@ end
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'cancan'
-gem 'rolify'

@@ -8,6 +8,6 @@
 
 #user = User.create!(email: 'admin@rails-pac.com', password: '123456789', password_confirmation: '123456789')
 
-[:super_admin, :user].each do |role|
+[:super_admin, :member].each do |role|
   Role.create({ name: role })
 end
