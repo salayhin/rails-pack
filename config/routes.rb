@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  ActiveAdmin.routes(self)
-
-  devise_for ActiveAdmin::Devise.config
-
   devise_for :users, path_names: { sign_up: 'register' },
              controllers: {  sessions:            'sessions',
                              registrations:       'registrations',

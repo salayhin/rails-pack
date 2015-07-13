@@ -9,7 +9,17 @@
 
 
 ['superAdmin', 'member'].each do |role|
-  Role.create({ name: role })
+  Role.first_or_create({ name: role })
 end
 
-user = User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+user = User.new
+user.email = 'admin@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+
+if user.save
+  role_user = RolesUsers.find_by_user_id(user.id)
+  role_user.role_id = Role::USER_ROLE[:super_admin]
+  role_user.save
+end
+

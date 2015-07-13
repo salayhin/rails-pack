@@ -7,7 +7,7 @@ gem 'rails', '4.2.3'
 gem 'pg'
 #gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -46,6 +46,6 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
-gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'cancan'
+gem 'twitter-bootstrap-rails'
