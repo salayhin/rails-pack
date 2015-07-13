@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
+    resources :users
   end
 
   devise_for :users, path_names: { sign_up: 'register' },
