@@ -1,11 +1,12 @@
 module Admin
   class UsersController < ApplicationController
+    layout 'admin'
     before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
     # GET /admin/users
     # GET /admin/users.json
     def index
-      @admin_users = User.all
+      @users = User.all
     end
 
     # GET /admin/users/1
@@ -15,7 +16,7 @@ module Admin
 
     # GET /admin/users/new
     def new
-      @admin_user =User.new
+      @user = User.new
     end
 
     # GET /admin/users/1/edit
@@ -25,15 +26,15 @@ module Admin
     # POST /admin/users
     # POST /admin/users.json
     def create
-      @admin_user = User.new(admin_user_params)
+      @user = User.new(admin_user_params)
 
       respond_to do |format|
-        if @admin_user.save
-          format.html { redirect_to @admin_user, notice: 'User was successfully created.' }
+        if @user.save
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
           format.json { render :show, status: :created, location: @admin_user }
         else
           format.html { render :new }
-          format.json { render json: @admin_user.errors, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -42,12 +43,12 @@ module Admin
     # PATCH/PUT /admin/users/1.json
     def update
       respond_to do |format|
-        if @admin_user.update(admin_user_params)
-          format.html { redirect_to @admin_user, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @admin_user }
+        if @user.update(admin_user_params)
+          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit }
-          format.json { render json: @admin_user.errors, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -55,7 +56,7 @@ module Admin
     # DELETE /admin/users/1
     # DELETE /admin/users/1.json
     def destroy
-      @admin_user.destroy
+      @user.destroy
       respond_to do |format|
         format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
         format.json { head :no_content }
@@ -65,14 +66,12 @@ module Admin
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_user
-      @admin_user = User.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
-      params[:admin_user]
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
     end
   end
 end
-
-

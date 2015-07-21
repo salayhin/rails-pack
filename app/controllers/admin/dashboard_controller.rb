@@ -1,7 +1,8 @@
 module Admin
   class DashboardController < ApplicationController
+    layout 'admin'
     def index
-      puts 'ddd'
+      @users = User.all
     end
   end
 end
