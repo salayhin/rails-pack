@@ -1,38 +1,34 @@
 <div class="container main-container headerOffset">
   <div class="row">
     <div class="col-lg-9 col-md-9 col-sm-7">
-      <h1 class="section-title-inner">
+      <h2 class="section-title-inner">
         <span>
           <i class="fa fa-lock"></i>
           Authentication
         </span>
-      </h1>
-      <div class="row userInfo">
-        <div class="col-xs-12 col-sm-6">
-          <div class="control-group">
-            <%= link_to 'SIGN UP WITH FACEBOOK', user_omniauth_authorize_path(:facebook), :class => 'fb_button btn btn-block btn-lg' %>
-          </div>
-        </div>
-      </div>
-      <div class="row userInfo">
-        <div class="col-xs-6 col-sm-3">
-          <div class="control-group">
-            <%= link_to 'SIGN UP WITH TWITTER', user_omniauth_authorize_path(:twitter), :class => 'btn btn-block btn-lg' %>
-          </div>
-        </div>
-      </div>
-      <div class="row userInfo">
-        <div class="col-xs-6 col-sm-3">
-          <div class="control-group">
-            <%= link_to 'SIGN UP WITH GMAIL', user_omniauth_authorize_path(:google_oauth2), :class => 'btn btn-block btn-lg' %>
-          </div>
-        </div>
-      </div>
+      </h2>
 
       <div class="row userInfo">
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-xs-6 col-sm-6">
           <div class="control-group">
-            <%= link_to 'SIGN UP WITH LINKED IN', user_omniauth_authorize_path(:linkedin), :class => 'btn btn-block btn-lg' %>
+            <%= link_to  user_omniauth_authorize_path(:facebook), :class => 'btn btn-block btn-social btn-facebook' do %>
+                <i class="fa fa-facebook"></i> Sign up with Facebook
+            <% end %>
+
+            <br />
+            <%= link_to  user_omniauth_authorize_path(:twitter), :class => 'btn btn-block btn-social btn-twitter' do %>
+                <i class="fa fa-twitter"></i> Sign up with Twitter
+            <% end %>
+
+            <br />
+            <%= link_to  user_omniauth_authorize_path(:google_oauth2), :class => 'btn btn-block btn-social btn-google' do %>
+                <i class="fa fa-google"></i> Sign up with Google
+            <% end %>
+
+            <br />
+            <%= link_to  user_omniauth_authorize_path(:linkedin), :class => 'btn btn-block btn-social btn-linkedin' do %>
+                <i class="fa fa-linkedin"></i> Sign up with Linked In
+            <% end %>
           </div>
         </div>
       </div>
