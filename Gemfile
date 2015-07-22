@@ -49,4 +49,7 @@ end
 gem 'devise'
 gem 'cancan'
 gem 'twitter-bootstrap-rails'
+gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.1'
+gem 'omniauth-google-oauth2', '~> 0.2.6'
+gem 'omniauth-linkedin', '~> 0.2.0'

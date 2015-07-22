@@ -15,6 +15,13 @@
         </div>
       </div>
       <div class="row userInfo">
+        <div class="col-xs-6 col-sm-3">
+          <div class="control-group">
+            <%= link_to 'SIGN UP WITH GMAIL', user_omniauth_authorize_path(:google_oauth2), :class => 'btn btn-block btn-lg' %>
+          </div>
+        </div>
+      </div>
+      <div class="row userInfo">
         <div class="col-xs-12 col-sm-6">
           <h5 class="text-center" style="padding:10px 0 10px 0;">OR</h5>
         </div>
