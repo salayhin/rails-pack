@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # facebook sign in
+  FACEBOOK_SIGN_IN_APP_ID = '857627197619811'
+  FACEBOOK_SIGN_IN_APP_SECRET = '700cd31dd5951451aa72ffd44e9f7ce8'
 end
