@@ -44,32 +44,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def twitter
-    auth = request.env['omniauth.auth']
-    user = User.where(auth.slice('provider', 'uid')).first
-    if user.present?
-      sign_in(user, event: :authentication)
-      redirect_to session.has_key?(:return_url) ? session.delete(:return_url) : root_path
-    else
-      name = auth['info']['name'].split(/ /)
-      length = name.length
-      if length > 1
-        last_name = name.pop(1).join(' ')
-        first_name = name.join(' ')
-      else
-        first_name = auth['info']['name']
-        last_name = ''
-      end
-      sign_up_data = { provider: auth['provider'],
-                       uid:  auth['uid'],
-                       image: auth['info']['image'].sub('_normal', ''),
-                       first_name: first_name,
-                       last_name:  last_name,
-                       email:  '',
-                       gender:  ''
-      }
+    @user = User.from_twitter_omniauth(request.env['omniauth.auth'])
 
-      session[:sign_up_data] = sign_up_data
-      redirect_to request.referer.present? ? request.referer : root_path
+    if @user.persisted?
+      flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', :kind => 'Twitter'
+      sign_in_and_redirect @user, :event => :authentication
+    else
+      #session['devise.linkedin_data'] = request.env['omniauth.auth']
+      redirect_to new_user_registration_url
     end
   end
 

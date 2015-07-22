@@ -17,6 +17,13 @@
       <div class="row userInfo">
         <div class="col-xs-6 col-sm-3">
           <div class="control-group">
+            <%= link_to 'SIGN IN WITH TWITTER', user_omniauth_authorize_path(:twitter), :class => 'btn btn-block btn-lg' %>
+          </div>
+        </div>
+      </div>
+      <div class="row userInfo">
+        <div class="col-xs-6 col-sm-3">
+          <div class="control-group">
             <%= link_to 'SIGN IN WITH GMAIL', user_omniauth_authorize_path(:google_oauth2), :class => 'btn btn-block btn-lg' %>
           </div>
         </div>

@@ -8,5 +8,5 @@ if Rails.env.production?
 elsif Rails.env.staging?
   OmniAuth.config.full_host = 'http://localhost:3000'
 else
-  OmniAuth.config.full_host = 'http://localhost:3000'
+  OmniAuth.config.full_host = 'http://lvh.me:3000'
 end
