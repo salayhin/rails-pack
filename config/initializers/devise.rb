@@ -3,6 +3,7 @@
 Devise.setup do |config|
   require 'omniauth-facebook'
   require 'omniauth-google-oauth2'
+  require 'omniauth-linkedin'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -236,6 +237,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, FACEBOOK_SIGN_IN_APP_ID, FACEBOOK_SIGN_IN_APP_SECRET
+
+  config.omniauth :linkedin, LINKED_IN_SIGN_IN_CONSUMER_KEY, LINKED_IN_SIGN_IN_CONSUMER_SECRET
+           #:scope => 'r_fullprofile r_emailaddress r_network',
+           #:fields => ['id', 'email-address', 'first-name', 'last-name', 'headline', 'industry', 'picture-url', 'public-profile-url', 'location', 'connections']
+
   config.omniauth :google_oauth2, GMAIL_SIGN_IN_APP_ID, GMAIL_SIGN_IN_APP_SECRET
      {
          :provider_ignores_state => true,

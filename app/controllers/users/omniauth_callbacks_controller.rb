@@ -20,7 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def google_oauth2
     # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.from_omniauth_gmail(request.env['omniauth.auth'])
+    @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', :kind => 'Google'
@@ -31,7 +31,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  # TODO: Need to refactor this method. Should be multiple method with single tasks
+  def linkedin
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+
+    if @user.persisted?
+      flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', :kind => 'Linkedin'
+      sign_in_and_redirect @user, :event => :authentication
+    else
+      #session['devise.linkedin_data'] = request.env['omniauth.auth']
+      redirect_to new_user_registration_url
+    end
+  end
+
   def twitter
     auth = request.env['omniauth.auth']
     user = User.where(auth.slice('provider', 'uid')).first

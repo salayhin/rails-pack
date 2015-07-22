@@ -16,23 +16,25 @@ class User < ActiveRecord::Base
     self.role?(:super_admin)
   end
 
-  def self.from_omniauth_gmail(access_token)
+  def self.from_omniauth(access_token)
     data = access_token.info
     provider = access_token.provider
     uid = access_token.uid
 
-    user = User.where(:email => data['email']).first
+    user = User.where(:provider => provider, :uid => uid).first
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-        user = User.create(
-           first_name: data['first_name'],
-           last_name: data['last_name'],
-           email: data['email'],
-           provider: provider,
-           uid: uid,
-           password: Devise.friendly_token[0,20]
-        )
+
+      user                          = self.new
+      user.first_name               = data['first_name']
+      user.last_name                = data['last_name']
+      user.email                    = data['email']
+      user.provider                 = provider
+      user.uid                      = uid
+      user.password                 = Devise.friendly_token[0,20]
+
+      user.save(validate: true)
     end
     user
   end
