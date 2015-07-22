@@ -8,7 +8,7 @@
 
 
 
-['superAdmin', 'member'].each do |role|
+['SuperAdmin', 'Member'].each do |role|
   Role.first_or_create({ name: role })
 end
 
