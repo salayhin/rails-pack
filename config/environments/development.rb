@@ -40,19 +40,18 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # facebook sign in
-  FACEBOOK_SIGN_IN_APP_ID = '857627197619811'
-  FACEBOOK_SIGN_IN_APP_SECRET = '700cd31dd5951451aa72ffd44e9f7ce8'
 
-  # twitter sign in
-  TWITTER_SIGN_IN_APP_ID = 'E6xVTl3j92q4oTLTxdbB9ZsXd'
-  TWITTER_SIGN_IN_APP_SECRET = 'P0rAriGE86iZ5BOg26ChAhoDJMATFRmz7MDGMuVLgBjvYAjPjL'
-
-  # Linkedin Sign in
-  LINKED_IN_SIGN_IN_CONSUMER_KEY = '75ih5a33gmx7fn'
-  LINKED_IN_SIGN_IN_CONSUMER_SECRET = 'l6Iw5Z1v3tdL6SSl'
-
-  # Gmail Sign in
-  GMAIL_SIGN_IN_APP_ID = '901261843540-p46li4jg15ke68a5ga3d1d1k3m8c5365.apps.googleusercontent.com'
-  GMAIL_SIGN_IN_APP_SECRET = 'QDXHuCQyI6Fe8yMqepXh_Thy'
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ActionMailer::Base.delivery_method = :smtp
+  #SMTP Settings for GMAIL, You can use Mandrill
+  ActionMailer::Base.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "google.com",
+      :user_name            => ENV['gmail_username'],
+      :password             => ENV['gmail_password'],
+      :authentication       => "plain",
+      :enable_starttls_auto => true
+  }
 
 end

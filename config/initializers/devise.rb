@@ -237,8 +237,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, FACEBOOK_SIGN_IN_APP_ID, FACEBOOK_SIGN_IN_APP_SECRET
-  config.omniauth :twitter, TWITTER_SIGN_IN_APP_ID, TWITTER_SIGN_IN_APP_SECRET
+  config.omniauth :facebook, ENV['FACEBOOK_SIGN_IN_APP_ID'], ENV['FACEBOOK_SIGN_IN_APP_SECRET']
+  config.omniauth :twitter, ENV['TWITTER_SIGN_IN_APP_ID'], ENV['TWITTER_SIGN_IN_APP_SECRET']
       {
           :secure_image_url => 'true',
           :image_size => 'original',
@@ -247,12 +247,12 @@ Devise.setup do |config|
             :lang => 'pt'
           }
       }
-  config.omniauth :linkedin, LINKED_IN_SIGN_IN_CONSUMER_KEY, LINKED_IN_SIGN_IN_CONSUMER_SECRET
+  config.omniauth :linkedin, ENV['LINKED_IN_SIGN_IN_CONSUMER_KEY'], ENV['LINKED_IN_SIGN_IN_CONSUMER_SECRET']
 
-  config.omniauth :google_oauth2, GMAIL_SIGN_IN_APP_ID, GMAIL_SIGN_IN_APP_SECRET
+  config.omniauth :google_oauth2, ENV['GMAIL_SIGN_IN_APP_ID'], ENV['GMAIL_SIGN_IN_APP_SECRET']
      {
          :provider_ignores_state => true,
-         :redirect_uri => 'http://localhost:3000/users/auth/google_oauth2/callback',
+         :redirect_uri => 'http://localhost:3000/users/auth/google_oauth2/callback', #change this redirect url
          :name => 'google',
          :scope => 'email, profile, plus.me, http://gdata.youtube.com',
          :prompt => 'select_account',
