@@ -1,5 +1,6 @@
 # encoding: utf-8
 class SessionsController < Devise::SessionsController
+  layout false
   respond_to :html, :json
   def create
     resource = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#failure")
